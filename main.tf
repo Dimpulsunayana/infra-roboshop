@@ -3,4 +3,5 @@ module "vpc" {
 
   env =var.env
   cidr_block = var.cidr_block
+  default_vpc_id = var.default_vpc_id
 }
