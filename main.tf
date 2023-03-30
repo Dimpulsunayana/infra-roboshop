@@ -5,7 +5,7 @@ module "vpc" {
   #cidr_block = var.cidr_block
   default_vpc_id = var.default_vpc_id
 
-  for_each = var.subnets
+  for_each = var.vpc
 #  public_subnets = each.value.public_subnets
 #  private_subnets = each.value.private_subnets
   availability_zone = each.value.availability_zone
