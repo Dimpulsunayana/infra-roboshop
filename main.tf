@@ -14,7 +14,6 @@ module "vpc" {
 }
 
 variable "subnets" {
-    main = {
       public_subnets = {
         public = {
           name              = "public"
@@ -31,4 +30,3 @@ variable "subnets" {
         }
       }
     }
-  }
