@@ -12,3 +12,7 @@ module "vpc" {
   cidr_block = each.value.cidr_block
   #name = each.value.name
 }
+
+output "vpc" {
+  value = module.vpc
+}
