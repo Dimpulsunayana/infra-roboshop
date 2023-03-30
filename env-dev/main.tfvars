@@ -13,14 +13,14 @@ vpc = {
         cidr_block        = ["10.0.0.0/24", "10.0.1.0/24"]
         igw_gateway_id    = true
         # availability_zone = ["us-east-1a", "us-east-1b"]
-        #internet_gw   = true
+        internet_gw   = true
       }
       private = {
         name              = "private"
         cidr_block        = ["10.0.2.0/24", "10.0.3.0/24"]
         gateway_id        = true
         # availability_zone = ["us-east-1a", "us-east-1b"]
-        #internet_gw   = true
+        nat_gw   = true
       }
     }
 
