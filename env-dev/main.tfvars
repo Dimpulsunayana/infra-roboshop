@@ -1,11 +1,11 @@
 env = "dev"
-#cidr_block = "10.0.0.0/16"
+cidr_block = "10.0.0.0/16"
 
 default_vpc_id = "vpc-0aa3bbef058e14256"
 
 vpc = {
   main = {
-    cidr_block = "10.0.0.0/16"
+    #cidr_block = "10.0.0.0/16"
     availability_zone = ["us-east-1a", "us-east-1b"]
     public_subnets    = {
       public = {
