@@ -12,21 +12,3 @@ module "vpc" {
   cidr_block = each.value.cidr_block
   name = each.value.name
 }
-
-variable "subnets" {
-      public_subnets = {
-        public = {
-          name              = "public"
-          cidr_block        = ["10.0.0.0/24", "10.0.1.0/24"]
-          availability_zone = ["us-east1a", "us-east1b"]
-        }
-      }
-
-      private_subnets = {
-        private = {
-          name              = "private"
-          cidr_block        = ["10.0.2.0/24", "10.0.3.0/24"]
-          availability_zone = ["us-east1a", "us-east1b"]
-        }
-      }
-    }
