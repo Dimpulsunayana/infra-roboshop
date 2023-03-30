@@ -3,7 +3,7 @@ cidr_block = "10.0.0.0/16"
 
 default_vpc_id = "vpc-0aa3bbef058e14256"
 
-subnets = {
+subnets1 = {
   public_subnets = {
     name = "public"
     cidr_block = ["10.0.0.0/24","10.0.1.0/24"]
