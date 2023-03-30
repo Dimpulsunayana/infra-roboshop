@@ -13,6 +13,6 @@ module "vpc" {
   #name = each.value.name
 }
 
-output "vpc" {
-  value = module.vpc
-}
+#output "vpc" {
+#  value = module.vpc
+#}
