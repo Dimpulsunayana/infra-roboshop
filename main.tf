@@ -10,6 +10,5 @@ module "vpc" {
 #  private_subnets = each.value.private_subnets
   availability_zone = each.value.availability_zone
   cidr_block = each.value.cidr_block
-  name = each.value.name
-  public_subnets = each.value.public_subnets
+  #name = each.value.name
 }
