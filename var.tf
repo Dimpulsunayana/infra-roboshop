@@ -3,3 +3,4 @@ variable "env" {}
 variable "default_vpc_id" {}
 variable "vpc" {}
 #variable "main_vpc" {}
+variable "docdb" {}
