@@ -17,9 +17,9 @@ output "vpc" {
   value = module.vpc
 }
 
-#module "DOCDB" {
-#  source = "github.com/Dimpulsunayana/docdb_tf"
-#
-#  env = var.env
-#  main_vpc = var.main_vpc
-#}
+module "DOCDB" {
+  source = "github.com/Dimpulsunayana/docdb_tf"
+
+  env = var.env
+  main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
+}
