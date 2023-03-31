@@ -17,12 +17,12 @@ output "vpc" {
   value = module.vpc
 }
 
-#module "DOCDB" {
-#  source = "github.com/Dimpulsunayana/docdb_tf"
-#
-#  env = var.env
-#  for_each = var.docdb
-#  subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
-#  main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
-#  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "cidr_block", null)
-#}
+module "DOCDB" {
+  source = "github.com/Dimpulsunayana/docdb_tf"
+
+  env = var.env
+  for_each = var.docdb
+  subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnets", null), each.value.private, null), "subnet_ids", null)
+  main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
+  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "cidr_block", null)
+}
