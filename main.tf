@@ -16,3 +16,10 @@ module "vpc" {
 #output "vpc" {
 #  value = module.vpc
 #}
+
+module "DOCDB" {
+  source = "github.com/Dimpulsunayana/docdb_tf"
+
+  env = var.env
+  main_vpc = var.main_vpc
+}
