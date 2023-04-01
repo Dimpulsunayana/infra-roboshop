@@ -25,6 +25,6 @@ module "DOCDB" {
   subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "subnet_ids", null)
   main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
   allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "cidr_block", null)
-  instance_class = var.instance_class
-  engine_version = var.engine_version
+  instance_class = each.value.instance_class
+  engine_version = each.value.engine_version
 }
