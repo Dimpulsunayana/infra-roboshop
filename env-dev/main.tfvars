@@ -39,6 +39,7 @@ docdb = {
 
 rds = {
   main = {
+    vpc_name            = "main"
     #    subnets_name        = "db"
     engine_version      = "5.7.mysql_aurora.2.03.2"
     engine = "aurora-mysql"
