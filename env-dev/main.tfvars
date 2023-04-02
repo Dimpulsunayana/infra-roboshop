@@ -37,7 +37,7 @@ docdb = {
   }
 }
 
-rds= {
+rds = {
   main = {
     #    subnets_name        = "db"
     engine_version      = "5.7"
