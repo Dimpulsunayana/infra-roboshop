@@ -37,29 +37,13 @@ docdb = {
   }
 }
 
+rds= {
+  main = {
+    #    subnets_name        = "db"
+    engine_version      = "5.7"
+    #    number_of_instances = 1
+    instance_class      = "db.t3.micro"
+    parameter_group_name = "default.mysql5.7"
+  }
+}
 
-      #    private_subnets = {
-      #      web = {
-      #        name              = "web"
-      #        cidr_block        = ["10.0.2.0/24", "10.0.3.0/24"]
-      #        availability_zone = ["us-east-1a", "us-east-1b"]
-      #        # nat_gw     = true
-      #      }
-      #    }
-
-
-#subnets = {
-#  map = {
-#    public_subnets = {
-#      name              = "public"
-#      cidr_block        = ["10.0.0.0/24", "10.0.1.0/24"]
-#      availability_zone = ["us-east1a", "us-east1b"]
-#    }
-#
-#    #        private_subnets = {
-#    #            name              = "private"
-#    #            cidr_block        = ["10.0.2.0/24", "10.0.3.0/24"]
-#    #            availability_zone = ["us-east1a", "us-east1b"]
-#    #        }
-#  }
-#}
