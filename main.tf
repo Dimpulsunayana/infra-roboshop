@@ -30,6 +30,7 @@ module "DOCDB" {
 }
 
 module "rds" {
+  source = "github.com/Dimpulsunayana/rds_tf"
   for_each = var.rds
   parameter_group_name = each.value.parameter_group_name
   instance_class = each.value.instance_class
