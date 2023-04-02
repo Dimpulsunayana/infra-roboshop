@@ -32,6 +32,7 @@ module "DOCDB" {
 module "rds" {
   source = "github.com/Dimpulsunayana/rds_tf"
   env = var.env
+  subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "subnet_ids", null)
   allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "cidr_block", null)
   main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
 
