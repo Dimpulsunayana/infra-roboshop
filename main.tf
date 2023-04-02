@@ -34,8 +34,8 @@ module "rds" {
   env = var.env
 
   for_each = var.rds
-  parameter_group_name = each.value.parameter_group_name
   instance_class = each.value.instance_class
   engine_version = each.value.engine_version
+  engine = each.value.engine
 
 }

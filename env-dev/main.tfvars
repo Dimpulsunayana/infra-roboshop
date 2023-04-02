@@ -40,10 +40,10 @@ docdb = {
 rds = {
   main = {
     #    subnets_name        = "db"
-    engine_version      = "5.7"
+    engine_version      = "5.7.mysql_aurora.2.03.2"
+    engine = "aurora-mysql"
     #    number_of_instances = 1
     instance_class      = "db.t3.micro"
-    parameter_group_name = "default.mysql5.7"
   }
 }
 
