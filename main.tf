@@ -43,3 +43,7 @@ module "rds" {
 
 
 }
+
+output "rs" {
+  value = module.rds
+}
