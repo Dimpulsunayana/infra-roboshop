@@ -57,5 +57,5 @@ module "elasticache" {
 
   for_each = var.redis
   node_type = each.value.node_type
-  vpc_name = each.value.vpc_name
+  //vpc_name = each.value.vpc_name
 }
