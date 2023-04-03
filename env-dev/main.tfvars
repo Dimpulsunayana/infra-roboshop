@@ -48,3 +48,10 @@ rds = {
   }
 }
 
+redis = {
+  main = {
+    vpc_name            = "main"
+    node_type = "cache.t3.micro"
+  }
+}
+

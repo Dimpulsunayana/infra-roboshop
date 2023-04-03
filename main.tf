@@ -44,6 +44,18 @@ module "rds" {
 
 }
 
-output "rs" {
-  value = module.rds
+#output "rs" {
+#  value = module.rds
+#}
+
+module "elasticache" {
+  source = "github.com/Dimpulsunayana/elasticache_tf"
+  env = var.env
+  subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "subnet_ids", null)
+  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "cidr_block", null)
+  main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
+
+  for_each = var.redis
+  node_type = each.value.node_type
+  vpc_name = each.value.vpc_name
 }
