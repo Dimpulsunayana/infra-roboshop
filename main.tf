@@ -57,6 +57,6 @@ module "elasticache" {
 
   for_each = var.redis
   node_type = each.value.node_type
-  engine_version = each.value.engine_version
+  #engine_version = each.value.engine_version
   //vpc_name = each.value.vpc_name
 }
