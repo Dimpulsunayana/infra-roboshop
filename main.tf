@@ -24,7 +24,7 @@ module "DOCDB" {
   for_each = var.docdb
   subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null),  "private_subnets", null), "private", null), "subnet_ids", null)
   main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
-  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
+  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "cidr_block", null)
   instance_class = each.value.instance_class
   engine_version = each.value.engine_version
 }
@@ -33,7 +33,7 @@ module "rds" {
   source = "github.com/Dimpulsunayana/rds_tf"
   env = var.env
   subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "subnet_ids", null)
-  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
+  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "cidr_block", null)
   main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
 
   for_each = var.rds
@@ -52,7 +52,7 @@ module "elasticache" {
   source = "github.com/Dimpulsunayana/elasticache_tf"
   env = var.env
   subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "subnet_ids", null)
-  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
+  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "cidr_block", null)
   main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
 
   for_each = var.redis
@@ -65,7 +65,7 @@ module "rabbitmq" {
   source = "github.com/Dimpulsunayana/rabbitmq-tf"
   env = var.env
   subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "subnet_ids", null)
-  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
+  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "cidr_block", null)
   main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
 
   for_each = var.rabbitmq
