@@ -32,7 +32,7 @@ module "DOCDB" {
 module "rds" {
   source = "github.com/Dimpulsunayana/rds_tf"
   env = var.env
-  subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
+  subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnets", null), each.value.subnets_name, null), "subnet_ids", null)
   allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
   main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
 
@@ -82,7 +82,7 @@ module "alb" {
   env    = var.env
 
   for_each     = var.alb
-  subnet_ids   = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnets", null), each.value.subnets_name, null), "subnet_ids", null)
+  subnet_ids   = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnets_ids", null), each.value.subnets_name, null), "subnet_ids", null)
   main_vpc      = lookup(lookup(module.vpc, each.value.vpc_name, null), "main_vpc", null)
   allow_cidr   = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
   subnets_name = each.value.subnets_name
