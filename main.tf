@@ -83,5 +83,5 @@ module "alb-tf" {
   main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
 
   for_each = var.alb
-  subnets_name = each.value.subnets_name
+  #subnets_name = each.value.subnets_name
 }
