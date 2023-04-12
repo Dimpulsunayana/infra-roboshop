@@ -17,17 +17,17 @@ output "vpc" {
   value = module.vpc
 }
 
-module "DOCDB" {
-  source = "github.com/Dimpulsunayana/docdb_tf"
-
-  env = var.env
-  for_each = var.docdb
-  subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null),  "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
-  main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
-  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
-  instance_class = each.value.instance_class
-  engine_version = each.value.engine_version
-}
+#module "DOCDB" {
+#  source = "github.com/Dimpulsunayana/docdb_tf"
+#
+#  env = var.env
+#  for_each = var.docdb
+#  subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null),  "private_subnet_ids", null), each.value.subnets_name, null), "subnet_ids", null)
+#  main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
+#  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
+#  instance_class = each.value.instance_class
+#  engine_version = each.value.engine_version
+#}
 
 #module "rds" {
 #  source = "github.com/Dimpulsunayana/rds_tf"
@@ -75,15 +75,15 @@ module "DOCDB" {
 #  deployment_mode = each.value.deployment_mode
 #}
 #
-##module "alb-tf" {
-##  source = "github.com/Dimpulsunayana/alb-tf"
-##  env = var.env
-##
-##  for_each     = var.alb
-##   subnet_ids   = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), each.value.subnets_type, null), each.value.subnets_name, null), "subnet_ids", null)
-##  main_vpc       = lookup(lookup(module.vpc, each.value.vpc_name, null), "main_vpc", null)
-##  //subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), each.value.subnets_type, null), each.value.subnets_name, null), "subnet_ids", null)
-##  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
-##  //main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
-##  #subnets_name = each.value.subnets_name
-#}
+module "alb-tf" {
+  source = "github.com/Dimpulsunayana/alb-tf"
+  env = var.env
+
+  for_each     = var.alb
+   subnet_ids   = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), each.value.subnets_type, null), each.value.subnets_name, null), "subnet_ids", null)
+  main_vpc       = lookup(lookup(module.vpc, each.value.vpc_name, null), "main_vpc", null)
+  //subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), each.value.subnets_type, null), each.value.subnets_name, null), "subnet_ids", null)
+  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
+  //main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
+  subnets_name = each.value.subnets_name
+}
