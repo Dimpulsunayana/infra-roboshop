@@ -46,6 +46,7 @@ docdb = {
    engine_version      = "4.0.0"
 #    number_of_instances = 1
    instance_class      = "db.t3.medium"
+    subnets_name       = "db"
   }
 }
 
@@ -57,6 +58,7 @@ rds = {
     engine = "aurora-mysql"
     #    number_of_instances = 1
     instance_class      = "db.t3.small"
+    subnets_name       = "db"
   }
 }
 
@@ -65,6 +67,7 @@ redis = {
     vpc_name            = "main"
     node_type = "cache.t3.micro"
     #engine_version = "6.x"
+    subnets_name       = "db"
   }
 }
 
@@ -75,10 +78,12 @@ rabbitmq = {
     engine_version     = "3.10.10"
     host_instance_type = "mq.t3.micro"
     deployment_mode = "SINGLE_INSTANCE"
+    subnets_name       = "db"
   }
 }
 
 alb = {
+
   public = {
     vpc_name            = "main"
     subnets_type = "public_subnet_ids"
@@ -89,7 +94,7 @@ alb = {
     vpc_name            = "main"
     subnets_type = "private_subnet_ids"
     subnets_name = "app"
-
   }
+
 }
 
