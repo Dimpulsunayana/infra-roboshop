@@ -9,3 +9,4 @@ variable "redis" {}
 #variable "instance_class" {}
 #variable "engine_version" {}
 variable "rabbitmq" {}
+variable "alb" {}
