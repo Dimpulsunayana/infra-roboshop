@@ -80,10 +80,10 @@ module "alb-tf" {
   env = var.env
 
   for_each     = var.alb
-   subnet_ids   = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), each.value.subnets_type, null), "app", null), "subnet_ids", null)
+   subnet_ids   = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), each.value.subnets_type, null), each.value.subnets_name, null), "subnet_ids", null)
   main_vpc       = lookup(lookup(module.vpc, each.value.vpc_name, null), "main_vpc", null)
   //subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), each.value.subnets_type, null), each.value.subnets_name, null), "subnet_ids", null)
   allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
   //main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
-  #subnets_name = each.value.subnets_name
+  subnets_name = each.value.subnets_name
 }
