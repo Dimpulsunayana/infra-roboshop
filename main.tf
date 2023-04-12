@@ -62,7 +62,7 @@ module "elasticache" {
 }
 
 module "rabbitmq" {
-  source = "github.com/Dimpulsunayana/rabbitmq_tf"
+  source = "github.com/Dimpulsunayana/rabbitmq-tf"
   env = var.env
   subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "subnet_ids", null)
   allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "cidr_block", null)
