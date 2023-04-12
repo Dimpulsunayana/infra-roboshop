@@ -17,9 +17,21 @@ vpc = {
     }
 
     private_subnets = {
-      private = {
-        name           = "private"
+      app = {
+        name           = "app"
         cidr_block     = ["10.0.2.0/24", "10.0.3.0/24"]
+        # availability_zone = ["us-east-1a", "us-east-1b"]
+        nat_gw         = true
+      }
+      web = {
+        name           = "web"
+        cidr_block     = ["10.0.4.0/24", "10.0.5.0/24"]
+        # availability_zone = ["us-east-1a", "us-east-1b"]
+        nat_gw         = true
+      }
+      db = {
+        name           = "db"
+        cidr_block     = ["10.0.6.0/24", "10.0.7.0/24"]
         # availability_zone = ["us-east-1a", "us-east-1b"]
         nat_gw         = true
       }
@@ -63,6 +75,21 @@ rabbitmq = {
     engine_version     = "3.10.10"
     host_instance_type = "mq.t3.micro"
     deployment_mode = "SINGLE_INSTANCE"
+  }
+}
+
+alb = {
+  public = {
+    vpc_name            = "main"
+    subnets_type = "public_subnets"
+    subnets_name = "public"
+  }
+
+  private = {
+    vpc_name            = "main"
+    subnets_type = "private_subnets"
+    subnets_name = "app"
+
   }
 }
 
