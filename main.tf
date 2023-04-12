@@ -60,3 +60,17 @@ module "elasticache" {
   #engine_version = each.value.engine_version
   //vpc_name = each.value.vpc_name
 }
+
+module "rabbitmq" {
+  source = "github.com/Dimpulsunayana/rabbitmq_tf"
+  env = var.env
+  subnet_ids          = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "subnet_ids", null)
+  allow_cidr = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "private", null), "cidr_block", null)
+  main_vpc = lookup(lookup(module.vpc, "main",null ),"main_vpc" , null)
+
+  for_each = var.rabbitmq
+  engine_type = each.value.engine_type
+  engine_version = each.value.engine_version
+  host_instance_type = each.value.host_instance_type
+  deployment_mode = each.value.deployment_mode
+}

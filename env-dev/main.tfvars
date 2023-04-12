@@ -56,3 +56,13 @@ redis = {
   }
 }
 
+rabbitmq = {
+  main = {
+    vpc_name            = "main"
+    engine_type        = "RabbitMQ"
+    engine_version     = "3.10.10"
+    host_instance_type = "mq.t3.micro"
+    deployment_mode = "SINGLE_INSTANCE"
+  }
+}
+
