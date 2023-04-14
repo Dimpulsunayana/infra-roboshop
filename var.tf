@@ -10,3 +10,4 @@ variable "redis" {}
 #variable "engine_version" {}
 variable "rabbitmq" {}
 variable "alb" {}
+variable "apps" {}

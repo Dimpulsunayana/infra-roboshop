@@ -88,3 +88,15 @@ module "alb" {
   subnets_name = each.value.subnets_name
   internal = each.value.internal
 }
+
+module "apps" {
+  source = "github.com/Dimpulsunayana/alb-tf"
+  env    = var.env
+
+  for_each     = var.alb
+  subnet_ids   = lookup(lookup(lookup(lookup(module.vpc, each.value.vpc_name, null), each.value.subnets_type, null), each.value.subnets_name, null), "subnet_ids", null)
+  main_vpc      = lookup(lookup(module.vpc, each.value.vpc_name, null), "main_vpc", null)
+  allow_cidr   = lookup(lookup(lookup(lookup(var.vpc, each.value.vpc_name, null), "private_subnets", null), "app", null), "cidr_block", null)
+  component = each.value.component
+  app_port = each.value.app_port
+}
