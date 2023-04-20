@@ -103,5 +103,5 @@ module "apps" {
   min_size = each.value.min_size
   desired_capacity = each.value.desired_capacity
   instance_type = each.value.instance_type
-  #allow_workstation_cidr = var.allow_workstation_cidr
+  allow_workstation_cidr = var.allow_workstation_cidr
 }
