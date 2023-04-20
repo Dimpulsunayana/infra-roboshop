@@ -1,6 +1,6 @@
 env = "dev"
 #cidr_block = "10.0.0.0/16"
-allow_workstation_cidr = "172.31.6.8/32"
+allow_workstation_cidr = ["172.31.6.8/32"]
 
 default_vpc_id = "vpc-0aa3bbef058e14256"
 
