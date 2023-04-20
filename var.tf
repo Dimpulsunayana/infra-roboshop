@@ -11,3 +11,4 @@ variable "redis" {}
 variable "rabbitmq" {}
 variable "alb" {}
 variable "apps" {}
+variable "allow_workstation_cidr" {}
